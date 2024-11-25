@@ -4,16 +4,14 @@
   tasks: 
   
   - name: disable mysql
-    ansible.builtin.package:
-      name: mysql
-      state: absent
+    ansible.builtin.command: dnf module disable mysql -y
 
   - name: setup MySQL 5.7 repo 
     ansible.builtin.copy:
       src: mysql.repo
       dest: /etc/yum.repos.d/mysql.repo
 
-  - name: install mysql community server
+  - name: install mysql server
     ansible.builtin.package:
       name: mysql-community-server
       state: present 
