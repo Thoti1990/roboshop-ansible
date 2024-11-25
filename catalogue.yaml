@@ -42,9 +42,10 @@
 
   - name: daemond reload and enable start catalogue
     ansible.builtin.systemd_service:
-      state: restarted
       daemon_reload: true
-      enabled: true 
+      enabled: true
+      state: restarted       
+
 
   - name: copy mongodb repo
     ansible.builtin.copy:
